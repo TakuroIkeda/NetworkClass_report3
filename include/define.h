@@ -7,6 +7,6 @@
 #define t 100
 #define d 20
 #define max_n 50
-#define roop_count 10
+#define roop_count 100
 
 #endif
