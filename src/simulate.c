@@ -8,6 +8,7 @@
 #include "define.h"
 #include "simulate.h"
 
+// ノード間の距離をリセットする関数
 void reset_node_distance(double *node_distance, int n)
 {
     for (int i = 0; i < n; i++)
@@ -16,6 +17,7 @@ void reset_node_distance(double *node_distance, int n)
     }
 }
 
+// ノード間の距離を設定する関数
 void set_distance(double *node_distance, int n)
 {
     for (int i = 0; i < n; i++)
@@ -24,6 +26,7 @@ void set_distance(double *node_distance, int n)
     }
 }
 
+// ノードの位置を設定する関数
 void set_node_positions(double *node, int n)
 {
     for (int i = 0; i < n; i++)
@@ -32,6 +35,7 @@ void set_node_positions(double *node, int n)
     }
 }
 
+// ノード間の距離を計算する関数
 void calculate_node_distances(double *node, double *node_distance, int n)
 {
     for (int i = 0; i < n - 1; i++)
@@ -40,6 +44,7 @@ void calculate_node_distances(double *node, double *node_distance, int n)
     }
 }
 
+// ノード間の距離が許容範囲内かチェックする関数
 int check_distance(double *node_distance, double *node, int n)
 {
     for (int i = 0; i < n; i++)
@@ -56,6 +61,7 @@ int check_distance(double *node_distance, double *node, int n)
     return 1;
 }
 
+// 成功確率を出力する関数
 void output_probability(int success_count, int i)
 {
     char *data_file;
@@ -69,10 +75,15 @@ void output_probability(int success_count, int i)
     fclose(fp);
 }
 
-void sort_nodes(double *node, int n) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (node[j] > node[j + 1]) {
+// ノードをソートする関数
+void sort_nodes(double *node, int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = 0; j < n - i - 1; j++)
+        {
+            if (node[j] > node[j + 1])
+            {
                 double temp = node[j];
                 node[j] = node[j + 1];
                 node[j + 1] = temp;

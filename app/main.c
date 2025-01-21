@@ -13,6 +13,7 @@ int main(void)
     char *data_file;
     FILE *fp;
 
+    // プログラム開始時刻を取得
     time_t start_time, end_time;
     time_t timer;
     struct tm *local;
@@ -32,10 +33,12 @@ int main(void)
 
     start_time = time(NULL);
 
+    // 結果を保存するファイルを作成
     data_file = "./result/probability.txt";
     fp = fopen(data_file, "w");
     fclose(fp);
 
+    // ノード数を1からmax_nまで増やしながらシミュレーションを実行
     for (int i = 1; i <= max_n; i++) // 添え字iは1からmax_nまで
     {
         int success_count = 0;
@@ -57,8 +60,10 @@ int main(void)
 
     end_time = time(NULL);
 
+    // 実行時間を表示
     printf("実行計測時間：%lf min\n", (end_time - start_time) / 60.0);
 
+    // プログラム終了時刻を取得
     timer = time(NULL);
     local = localtime(&timer);
 
