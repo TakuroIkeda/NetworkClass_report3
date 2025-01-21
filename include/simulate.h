@@ -17,4 +17,6 @@ void calculate_node_distances(double *node, double *node_distance, int n);
 
 void sort_nodes(double *node, int n);
 
+unsigned long long combination(int n, int k);
+
 #endif

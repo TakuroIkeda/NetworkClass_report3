@@ -70,7 +70,30 @@ void output_probability(int success_count, int i)
     data_file = "./result/probability.txt";
     fp = fopen(data_file, "a");
 
-    fprintf(fp, "%d\t%f\n", i, (double)success_count / (double)roop_count);
+    double calculate_probability = 0.0;
+    for (int h = 0; h <= i + 1; h++)
+    {
+        double sigma = 0.0;
+        sigma = pow(-1, h) * combination(i + 1, h);
+        double max = 0.0;
+        max = 1 - ((double)h * d / t);
+        if (max < 0)
+        {
+            sigma *= 0;
+        }
+        else
+        {
+            sigma *= pow(max, i);
+        }
+        calculate_probability += sigma;
+    }
+
+    if (calculate_probability < 0)
+    {
+        calculate_probability = 0;
+    }
+
+    fprintf(fp, "%d\t%f\t%f\n", i, (double)success_count / (double)roop_count, calculate_probability);
 
     fclose(fp);
 }
@@ -90,4 +113,21 @@ void sort_nodes(double *node, int n)
             }
         }
     }
+}
+
+// コンビネーションを計算する関数
+unsigned long long combination(int n, int k)
+{
+    if (k == 0 || k == n)
+        return 1;
+    if (k > n)
+        return 0;
+
+    unsigned long long result = 1;
+    for (int i = 1; i <= k; i++)
+    {
+        result *= n - (k - i);
+        result /= i;
+    }
+    return result;
 }

@@ -50,7 +50,7 @@ int main(void)
             double node_distance[i];
 
             set_node_positions(node, i + 1);
-            sort_nodes(node, i + 1); // 新しい関数の呼び出しを追加
+            sort_nodes(node, i + 1); // ノードをソート
             calculate_node_distances(node, node_distance, i + 1);
 
             success_count += check_distance(node_distance, node, i);
